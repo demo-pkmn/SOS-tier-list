@@ -64,4 +64,4 @@ ss.filter['type'] = st.checkbox("Filter by type?")
 ss.filter['ability'] = st.checkbox("Filter by ability?")
 ss.filter['picked'] = st.checkbox("Filter picked Pokemons?")
 
-st.dataframe(df.style.map(highlight), height=35*(len(df.index)+1))
+st.dataframe(df.style.applymap(highlight), height=35*(len(df.index)+1))
