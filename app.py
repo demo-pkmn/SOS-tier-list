@@ -10,7 +10,7 @@ def highlight(mon: str):
     if mon is None:
         return
     for filter in ['move', 'type', 'ability']:
-        if mon.lower() not in ss.results.get(filter, []) and ss.filter.get(filter, False) and ss.results.get(filter, []):
+        if mon.lower() not in ss.results.get(filter, []) and ss.filter.get(filter, False) and ss.results.get(filter, []).any():
             return 'background-color: #593c36'
         if mon in PICKED.values and ss.filter['picked']:
             return 'background-color: #593c36'
@@ -64,4 +64,4 @@ ss.filter['type'] = st.checkbox("Filter by type?")
 ss.filter['ability'] = st.checkbox("Filter by ability?")
 ss.filter['picked'] = st.checkbox("Filter picked Pokemons?", value=True)
 
-st.dataframe(df.style.applymap(highlight), height=35*(len(df.index)+1))
+st.dataframe(df.style.map(highlight), height=35*(len(df.index)+1))
