@@ -10,7 +10,7 @@ def highlight(mon: str):
     if mon is None:
         return
     for filter in ['move', 'type', 'ability']:
-        if mon.lower() not in ss.results.get(filter, []) and ss.filter.get(filter, False) and ss.results.get(filter, []).any():
+        if mon.lower() not in ss.results.get(filter, []) and ss.filter.get(filter, False) and ss.results.get(filter, pd.Series()).any():
             return 'background-color: #593c36'
         if mon in PICKED.values and ss.filter['picked']:
             return 'background-color: #593c36'
